@@ -20,7 +20,7 @@ app.use(express.json()); //global way to apply express middleware
 // API FOR HOMEPAGE
 
 app.get("/", function (request, response) {
-  response.send("welcome to the home page");
+  response.send("welcome to the home page of ganesh first api");
 });
 
 // API TO FIND BY ID
