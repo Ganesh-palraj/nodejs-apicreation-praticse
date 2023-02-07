@@ -1,0 +1,27 @@
+Users:
+- id (unique identifier)
+- username
+- email
+- password (hashed)
+- role (admin, user, etc.)
+
+Questions:
+- id (unique identifier)
+- title
+- body
+- user_id (reference to the user who asked the question)
+- tags (list of tags associated with the question)
+- created_at
+- updated_at
+
+Answers:
+- id (unique identifier)
+- body
+- user_id (reference to the user who provided the answer)
+- question_id (reference to the question the answer belongs to)
+- created_at
+- updated_at
+
+Tags:
+- id (unique identifier)
+- name
