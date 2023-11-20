@@ -1,39 +1,13 @@
 // mongosh 
-// starts mongodb and server
+// starts mongodb and server , shows the current version of the mongodb you have installed.
+
+// const { Collection } = require("mongodb")
+
 // show dbs 
 // shows all the database
-// use local - switches to local database
+
+// use local - switches to local database or if the database is not their it creates it.
 // use mongopractise
-// db.movies.find({})
-// shows the document in  the collection
-
-//inclusion command
-
-// db.movies.find({},{name:1,rating:1})
-
-//exclusion command
-
-// db.movies.find({},{name:0,rating:0})
-
-// inclusion and exclusion can't be mixed but can be only mixed 
-// to remove _id
-
-// db.movies.find({},{_id:0,name:1,rating:1})
-
-// sorting
-// db.movies.find({},{_id:0,name:1,rating:1}).sort({rating:1})
-// use rating:1 for ascending and 
-// rating:-1 for descending
-
-//compound sorting
-// db.movies.find({},{_id:0,name:1,rating:1}).sort({rating:1,name:1})
-
-//limit
-// db.movies.find({},{_id:0,name:1,rating:1}).sort({rating:1,name:1}).limit(2)
-
-//skip
-//  db.movies.find({},{_id:0,name:1,rating:1}).sort({rating:1,name:1}).limit(2).skip(2)
-
 
 // db.movies.insertMany([
 //     {
@@ -126,6 +100,56 @@
 //     }
 //   ])
 
+// show Collection
+// shows the collection in the database
+
+// db.movies.find({})
+// shows the document in  the collection , it is like the select command of mongodb
+
+// Db.movies.find({}).count() or .countdocument()
+// this command shows the number of documents in your collection
+
+// inclusion command
+// tells what values should be included in the projection with the command with either 1 or 0
+
+// cannot mix inclusion and exclusion , but it is only allowed if you want to exclude _id
+// which is written as 
+// Db.movies.find({},{_id:0 , name: 1 , rating:1})
+
+// db.movies.find({},{name:1,rating:1})
+
+// exclusion command
+
+// db.movies.find({},{name:0,rating:0})
+
+// inclusion and exclusion can't be mixed but can be only mixed 
+// to remove _id
+
+// db.movies.find({},{_id:0,name:1,rating:1})
+
+// sorting
+
+// db.movies.find({},{_id:0,name:1,rating:1}).sort({rating:1}) for ascending sort 
+// db.movies.find({},{_id:0,name:1,rating:1}).sort({rating:-1}) for descending sort
+
+// use rating:1 for ascending and 
+// rating:-1 for descending
+
+// in however way you insert them is the way they are sorted , 
+// that is _id is how the data are sorted without andy prompt.
+
+// compound sorting
+// db.movies.find({},{_id:0,name:1,rating:1}).sort({rating:1,name:1})
+
+// limit
+// db.movies.find({},{_id:0,name:1,rating:1}).sort({rating:1,name:1}).limit(2)
+
+// skip
+//  db.movies.find({},{_id:0,name:1,rating:1}).sort({rating:1,name:1}).limit(2).skip(2)
+
+
+
+
 // order collections
 // aggregation
 
@@ -138,16 +162,16 @@
 //   { _id: 5, productName: "Iron rod", status: "urgent", quantity: 10 }
 //   ]) 
 
-  // stage 1
-  // db.metals.aggregate([
-  //   {$match: {status: "urgent"}}
-  // ])
+//   stage 1
+//   db.metals.aggregate([
+//     {$match: {status: "urgent"}}
+//   ])
 
-  // db.metals.aggregate([
-  //   {$match: {status: 'urgent'}},
-  //   {$group: {_id: "$productName" , totalUrgentQuantity : {$sum:"$quantity"}}}]) 
+//   db.metals.aggregate([
+//     {$match: {status: 'urgent'}},
+//     {$group: {_id: "$productName" , totalUrgentQuantity : {$sum:"$quantity"}}}]) 
 
-  // to update
-  // first find and then use $set with the data you want to update and then update 
+//   to update
+//   first find and then use $set with the data you want to update and then update 
 
-  // db.movies.updateMany({},{$set:{language:"english"}})
+//   db.movies.updateMany({},{$set:{language:"english"}})

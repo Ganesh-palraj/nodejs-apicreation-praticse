@@ -1,7 +1,9 @@
 import express from "express";
+import bcrypt from "bcrypt";
 import { MongoClient } from "mongodb";
 import * as dotenv from "dotenv";
 import moviesRouter from './routes/movies.routes.js';
+import usersRouter from './routes/users.routes.js';
 dotenv.config();
 // console.log(process.env)
 const app = express();
@@ -26,8 +28,19 @@ app.get("/", function (request, response) {
 
 app.use('/movies' , moviesRouter);
 // app.use('/cast' , castRouter); example of how route root can be easily created.
+app.use('/users' , usersRouter);
 
 
 app.listen(PORT, () => console.log(`The server started in: ${PORT} ✨✨`));
 
 export {client};
+
+async function generateHashedpassword(password){
+  const NO_OF_ROUNDS=10;
+  const salt = await bcrypt.genSalt(NO_OF_ROUNDS);
+  const hashedpassword = await bcrypt.hash(password,salt)
+  console.log(salt);
+  console.log(hashedpassword);
+}
+
+generateHashedpassword("password@123")
